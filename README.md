@@ -1,4 +1,31 @@
-# NixOS Install
+# Dotfiles
+
+Configuration files for my system and applications
+
+
+symlink path ./.config:
+
+```
+ln -s ~/dotfiles/.config ~/.config
+```
+
+previous command will link all these files:
+
+```sh
+.config
+├── hypr
+│   ├── hyprland.conf
+│   └── hyprpaper.conf
+├── rofi
+│   ├── config.rasi
+│   └── themes
+│       └── DarkBlue.rasi
+└── waybar
+    ├── config
+    └── style.css
+```
+
+## NixOS Install - Configuration as Code OS
 
 - NixOS docs: https://nixos.org/manual/nixos/stable/
 - NixOS video: https://youtu.be/61wGzIv12Ds
@@ -7,7 +34,7 @@
 - Hyprland support video: https://youtu.be/61wGzIv12Ds
 
 
-## Step 1 - Install on flash drive
+### Step 1 - Install on flash drive
 
 ```sh
 sudo dd if=~/Downloads/...nixos.iso of=/dev/sda bs=4M status=progress oflag=sync
@@ -17,7 +44,7 @@ sync
 shutdown now
 ```
 
-## Step 2 - boot in to usb stick
+### Step 2 - boot in to usb stick
 
 ```
 nmtui # connect to wifi
@@ -85,6 +112,19 @@ programs.hyprland.enable = true;
 ```
 reboot
 ```
-# Step 3
+
+### Step 3
 
 Boot into SSD and enjoy
+
+### Add rofi and waybar
+
+```
+home.packages = with pkgs; [
+  rofi
+  waybar
+];
+```
+```
+sudo nixos-rebuild switch
+```
