@@ -11,7 +11,7 @@ mkdir -p "$HOME/.config/"
 for file in *;
 do
   case "$file" in
-    *.md|.git*|*.sh)
+    *.md|.git*|*.sh|images)
       continue
       ;;
   esac
