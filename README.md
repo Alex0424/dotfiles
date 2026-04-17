@@ -1,141 +1,43 @@
 # Dotfiles
 
-Configuration files for my system and applications
+Centralized configuration files for all my Linux machines.
 
-## Symlink
+## Sync
 
-move files/dirs in ./config to a backup dir:
-
-mv .config/hypr .config/hypr.backup
-
-symlink path ./.config:
-
-```
-Quick:
-ln -s ~/dotfiles/.config ~/.config/.
-
-# Safer:
-ln -s ~/dotfiles/.config/hypr ~/.config/.
-ln -s ~/dotfiles/.config/waybar ~/.config/.
-ln -s ~/dotfiles/.config/rofi ~/.config/.
-```
-
-previous command will link all these files:
+Use the following commands to apply these dotfiles to a new system:
 
 ```sh
-.config
-├── hypr
-│   ├── hyprland.conf
-│   └── hyprpaper.conf
-├── rofi
-│   ├── config.rasi
-│   └── themes
-│       └── DarkBlue.rasi
-└── waybar
-    ├── config
-    └── style.css
+repo_absolute_path=$(pwd)
+
+rm -rf ~/.config/hypr
+rm -rf ~/.config/nvim
+rm -rf ~/.config/rofi
+rm -rf ~/.config/waybar
+
+ln -s $repo_absolute_path/hypr $HOME/.config/hypr
+ln -s $repo_absolute_path/nvim $HOME/.config/nvim
+ln -s $repo_absolute_path/rofi $HOME/.config/rofi
+ln -s $repo_absolute_path/waybar $HOME/.config/waybar
 ```
 
-## NixOS Install - Configuration as Code OS
+## Migrate
 
-- NixOS docs: https://nixos.org/manual/nixos/stable/
-- NixOS video: https://youtu.be/61wGzIv12Ds
-
-- Hyprland support docs: https://wiki.hypr.land/Nix/Hyprland-on-NixOS/
-- Hyprland support video: https://youtu.be/61wGzIv12Ds
-
-
-### Step 1 - Install on flash drive
+Use the following commands to copy your current system configuration into this repository:
 
 ```sh
-sudo dd if=~/Downloads/...nixos.iso of=/dev/sda bs=4M status=progress oflag=sync
+repo_absolute_path=$(pwd)
 
-sync
+rm -r $HOME/
 
-shutdown now
-```
+rm -rf $repo_absolute_path/hypr
+cp -r $HOME/.config/hypr $repo_absolute_path
 
-### Step 2 - boot in to usb stick
+rm -rf $repo_absolute_path/nvim
+cp -r $HOME/.config/nvim $repo_absolute_path
 
-```
-nmtui # connect to wifi
-ping google.com # test
-```
+rm -rf $repo_absolute_path/rofi
+cp -r $HOME/.config/rofi/ $repo_absolute_path
 
-```sh
-lsblk
-# my disk is: nvme0n1 259:0 0 953.9G 0 disk
-cfdisk /dev/nvme0n1
-# chose gpt
-
-new: 1G
-type: EFI
-
-new: 4G
-type: swap
-
-new: capture all memory by typing Enter 2x. my size is 948.9G
-type: Linux filesystem
-write: yes
-
-quit
-
-mkfs.ext4 -L nixos /dev/nvme0n1p3
-mkswap -L swap /dev/nvme0n1p2
-mkfs.fat -F 32 -n boot /dev/nvme0n1p1
-
-mount /dev/nvme0n1p3 /mnt
-mount --mkdir /dev/nvme0n1p1 /mnt/boot
-swapon /dev/nvme0n1p2
-
-# Mount EFI vars
-mount -t efivarfs efivarfs /sys/firmware/efi/efivars/
-```
-```sh
-lsblk
-```
-```sh
-nvme0n1 953.9G      disk
-- nvme0n1p1 1G      part  /mnt/boot
-- nvme0n1p2 4G      part  [SWAP]
-- nvme0n1p3 948.9G  part  /mnt
-```
-```sh
-nixos-generate-config --root /mnt
-```
-```sh
-vim /mnt/etc/nixos/configuration.nix
-```
-```
-boot.loader.systemd-boot.enable = true;
-boot.loader.efi.canTouchEfiVariables = true;
-networking.networkmanager.enable = true;
-
-networking.hostName = "nixos-btw"
-
-time.timeZone = "Europe/Netherlands";
-
-# For Hyperland add these configs:
-services.xserver.enable = true;
-services.displayManager.sddm.enable = true;
-programs.hyprland.enable = true;
-```
-```
-reboot
-```
-
-### Step 3
-
-Boot into SSD and enjoy
-
-### Add rofi and waybar
-
-```
-home.packages = with pkgs; [
-  rofi
-  waybar
-];
-```
-```
-sudo nixos-rebuild switch
+rm -rf $repo_absolute_path/waybar
+cp -r $HOME/.config/waybar/ $repo_absolute_path
 ```
