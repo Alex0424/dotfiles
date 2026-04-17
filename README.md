@@ -2,7 +2,35 @@
 
 Centralized configuration files for all my Linux machines.
 
-## Sync
+## Preview
+
+### Hyprland
+
+![Hyprland](./images/hyprland.png)
+
+### Waybar
+
+![Waybar](./images/waybar.png)
+
+### Neovim
+
+![Neovim](./images/nvim.png)
+
+### Wofi
+
+![Wofi](./images/wofi.png)
+
+## Installation
+
+### Script
+
+```sh
+./install.sh
+```
+
+### Manual Installation
+
+#### Sync
 
 Use the following commands to apply these dotfiles to a new system:
 
@@ -20,7 +48,7 @@ ln -s $repo_absolute_path/rofi $HOME/.config/rofi
 ln -s $repo_absolute_path/waybar $HOME/.config/waybar
 ```
 
-## Migrate
+#### Migrate
 
 Use the following commands to copy your current system configuration into this repository:
 

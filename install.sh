@@ -2,7 +2,7 @@
 
 set -e
 
-repo_absolute_path="$PWD"
+repo_absolute_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "[INFO] Setting up dotfiles..."
 
