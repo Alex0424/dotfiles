@@ -9,13 +9,6 @@ My personal neovim config using [lazy.nvim](https://lazy.folke.io/) plugin manag
 - Nerd Font
 - Luarocks
 
-## Install
-
-```sh
-git clone git@github.com:YOUR_USERNAME/nvim.git ~/.config/nvim
-nvim
-```
-
 ## Tree
 
 ```sh
