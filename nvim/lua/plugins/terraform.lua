@@ -1,22 +1,26 @@
 return {
-  -- LSP (Neovim 0.11+ style)
+  -- Mason (required)
   {
-    "neovim/nvim-lspconfig",
-    config = function()
-      vim.lsp.config("terraformls", {
-        settings = {},
-      })
-
-      vim.lsp.enable("terraformls")
-    end,
+    "williamboman/mason.nvim",
+    opts = {},
   },
 
-  -- Mason (auto-install LSP)
+  -- Mason LSP bridge
   {
     "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
     opts = {
       ensure_installed = { "terraformls" },
     },
+  },
+
+  -- LSP
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      vim.lsp.config("terraformls", {})
+      vim.lsp.enable("terraformls")
+    end,
   },
 
   -- Formatting
