@@ -1,9 +1,6 @@
 #!/bin/bash
 
-count=$(systemctl --failed --no-legend | wc -l)
+sys=$(systemctl --failed --no-legend | wc -l)
+usr=$(systemctl --user --failed --no-legend | wc -l)
 
-if [ "$count" -eq 0 ]; then
-  echo "0"
-else
-  echo "$count"
-fi
+echo "$sys + $usr"

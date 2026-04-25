@@ -14,7 +14,8 @@
   "custom/systemd-failed": {
     "exec": "~/.config/waybar/scripts/failed-units.sh",
     "interval": 180,
-    "format": "systemd failed units: {}"
+    "format": "systemd failed units: {}",
+    "on-click": "kitty -e bash -c 'echo SYSTEM; systemctl --failed; echo; echo USER; systemctl --user --failed 2>/dev/null; echo; read'"
   },
 
   "pulseaudio": {
@@ -53,7 +54,8 @@
 
   "cpu": {
     "format": "CPU {usage}% ({load})",
-    "interval": 1
+    "interval": 1,
+    "on-click": "kitty -e top"
   },
 
   "memory": {

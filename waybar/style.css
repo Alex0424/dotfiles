@@ -8,11 +8,18 @@ window#waybar {
   color: #ffffff;
 }
 
+/* Workspaces */
+
 #workspaces button {
-  padding: 5px;
   color: #ffffff;
 }
 
-#clock, #battery, #network, #pulseaudio, #tray, #cpu, #memory, #disk, #media, #privacy, #custom-systemd-failed {
+#workspaces button.active {
+  background: rgba(27, 163, 100, 1);
+}
+
+/* Right Icons*/
+
+#temperature, #battery, #network, #pulseaudio, #tray, #cpu, #memory, #disk, #media, #privacy, #custom-systemd-failed {
   padding: 0 10px;
 }
