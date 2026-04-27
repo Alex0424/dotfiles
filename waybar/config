@@ -8,7 +8,9 @@
 
   "clock": {
     "format": "{:%a %d %b  %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "google-chrome-stable --new-window https://calendar.google.com"
+    //"on-click": "xdg-open https://calendar.google.com"
   },
 
   "custom/systemd-failed": {
