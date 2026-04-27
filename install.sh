@@ -23,7 +23,7 @@ do
     echo "[Conflict] $dest already exists"
     ls -l "$dest"
 
-    read -p "[Q&A] Replace it with symlink? (y/n): " answer
+    read -p "[Q&A] Replace $dest with symlink? (y/n): " answer
     if [[ "$answer" == "y" ]]; then
       rm -rf -- "$dest"
     else

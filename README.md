@@ -25,14 +25,17 @@ A centralized collection of configuration files for my Linux systems.
 The following software versions (or newer) are required for full compatibility:
 
 ```conf
-kitty    >= 0.43.1
-ranger   >= 1.9.4
 hyprland >= 0.51.1
-nvim     >= v0.12.0 (Neovim)
+kitty    >= 0.43.1
+starship >= 1.21.1
+nvim     >= 0.12.0 (Neovim)
 code     >= 1.116.0 (Visual Studio Code)
-waybar   >= v0.13.0
-wofi     >= v1.5.3
-hyprlock >= v0.9.2
+waybar   >= 0.13.0
+wofi     >= 1.5.3
+rofi    >= 1.7.9
+ranger   >= 1.9.4
+hyprlock >= 0.9.2
+neardfont >= 3.0.0
 ```
 
 ## Installation
@@ -45,40 +48,38 @@ hyprlock >= v0.9.2
 
 ### Manual Installation
 
-#### Sync Configuration to Your System
+#### 1. Validate repository
 
-This method links the repository configurations into your local system:
+⚠️ Make sure you are inside the correct repository before proceeding.
+
+Run this before executing any commands:
 
 ```sh
+[ -f .dotfiles-root ] || echo "ERROR: not in dotfiles repository, do not continue!"
 repo_path=$(pwd)
-
-rm -rf -- "$HOME/.config/hypr"
-rm -rf -- "$HOME/.config/nvim"
-rm -rf -- "$HOME/.config/rofi"
-rm -rf -- "$HOME/.config/waybar"
-
-ln -s "$repo_path/hypr" "$HOME/.config/hypr"
-ln -s "$repo_path/nvim" "$HOME/.config/nvim"
-ln -s "$repo_path/rofi" "$HOME/.config/rofi"
-ln -s "$repo_path/waybar" "$HOME/.config/waybar"
 ```
 
-#### Migrate Your Existing Configuration
+#### 2. (A) Sync configuration to your system
+
+This method links the repository configuration files into your local system using symlinks.
+
+```sh
+mkdir -p "$HOME/.config-backup"
+cp -r "$HOME/.config/<file>" "$HOME/.config-backup/" 2>/dev/null || true
+
+rm -rf -- "$HOME/.config/<file>"
+ln -s "$repo_path/<file>" "$HOME/.config/<file>"
+```
+
+Do this for each file you want to sync
+
+#### 2. (B) Migrate your existing configuration
 
 This method copies your current system configuration into this repository for version control:
 
 ```sh
-repo_path=$(pwd)
-
-rm -rf -- "$repo_path/hypr"
-cp -r "$HOME/.config/hypr" "$repo_path"
-
-rm -rf -- "$repo_path/nvim"
-cp -r "$HOME/.config/nvim" "$repo_path"
-
-rm -rf -- "$repo_path/rofi"
-cp -r "$HOME/.config/rofi" "$repo_path"
-
-rm -rf -- "$repo_path/waybar"
-cp -r "$HOME/.config/waybar" "$repo_path"
+rm -rf -- "$repo_path/<file>"
+cp -r "$HOME/.config/<file>" "$repo_path"
 ```
+
+Do this for each file you want to migrate
