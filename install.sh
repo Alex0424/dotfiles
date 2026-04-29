@@ -1,43 +1,36 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-repo_absolute_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "[INFO] Setting up dotfiles..."
+SOFTWARE_INSTALL="$BASE_DIR/scripts/software_install.sh"
+SYNC_SCRIPT="$BASE_DIR/scripts/sync_dotfiles.sh"
 
-mkdir -p "$HOME/.config/"
+if [[ ! -f "$SOFTWARE_INSTALL" ]]; then
+  echo "[ERROR] software_install.sh not found at $SOFTWARE_INSTALL"
+  exit 1
+fi
 
-for file in *;
-do
-  case "$file" in
-    *.md|.git*|*.sh|images)
-      continue
-      ;;
-  esac
+echo "[INFO] Software installation"
+echo "(Skip this if you only want to sync dotfiles)"
+echo
 
-  src="$repo_absolute_path/$file"
-  dest="$HOME/.config/$file"
+read -p "[Q&A] Install all software? (y/n): " answer
+answer=${answer:-n}
 
-  if [[ -e "$dest" || -L "$dest" ]]; then
-    echo "[Conflict] $dest already exists"
-    ls -l "$dest"
+if [[ "$answer" != "y" ]]; then
+  echo "[INFO] Skipping software installation"
+else
+  echo "[INFO] Installing software..."
+  bash "$SOFTWARE_INSTALL"
+fi
 
-    read -p "[Q&A] Replace $dest with symlink? (y/n): " answer
-    if [[ "$answer" == "y" ]]; then
-      rm -rf -- "$dest"
-    else
-      echo "[SKIP] $file"
-      continue
-    fi
-  else
-    read -p "[Q&A] Link $file → $dest? (y/n): " answer
-    if [[ "$answer" != "y" ]]; then
-      echo "[SKIP] $file"
-      continue
-    fi
-  fi
+if [[ ! -f "$SYNC_SCRIPT" ]]; then
+  echo "[ERROR] Sync_dotfiles.sh not found at $SYNC_SCRIPT"
+  exit 1
+fi
+echo "[INFO] Running dotfiles sync..."
+"$SYNC_SCRIPT"
 
-  ln -s "$src" "$dest"
-  echo "[OK] Linked $file"
-done
+echo "[DONE]"
