@@ -1,0 +1,23 @@
+[user]
+	email = lindholmalex.la@gmail.com
+  name = Alexander Lindholm
+[url "git@github.com:"]
+  insteadOf = https://github.com/ # force SSH
+[core]
+  editor = nvim
+[merge]
+  tool = vimdiff
+[diff]
+  tool = vimdiff
+#[pull]
+#  rebase = true
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  ci = commit
+  rss = "!f() { git reset --soft ${1:?commit required}; }; f" # move branch pointer, keep changes staged
+  rsh = "!f() { git reset --hard ${1:?commit required}; }; f" # move branch pointer, discard working changes, match commit exactly
+  amend = "!git diff --cached --quiet || (git diff --cached --stat && git commit --amend --no-edit)"
+  lg = log --graph --pretty=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr %C(reset)%C(blue)<%an>' --abbrev-commit --all
+  bisect-run = "!f() { git bisect start $1 $2 && git bisect run $3; }; f" # 1,2 = commit range, 3 = script
