@@ -8,26 +8,31 @@ SOFTWARE_INSTALL="$BASE_DIR/scripts/software_install.sh"
 SYNC_SCRIPT="$BASE_DIR/scripts/sync_dotfiles.sh"
 MIGRATE_SCRIPT=""
 
-install_software() {
-  if [[ ! -f "$SOFTWARE_INSTALL" ]]; then
-    echo "[ERROR] software_install.sh not found at $SOFTWARE_INSTALL"
+run_script() {
+  local script_path="$1"
+  local info_msg="$2"
+
+  if [[ ! -f "$script_path" ]]; then
+    echo "[ERROR] $(basename -- "$script_path") not found at: $script_path"
     exit 1
   fi
 
-  echo "[INFO] Installing software..."
-  "$SOFTWARE_INSTALL"
+  echo "[INFO] $info_msg"
+  "$script_path"
   echo "[DONE]"
 }
 
-sync_dotfiles() {
-  if [[ ! -f "$SYNC_SCRIPT" ]]; then
-    echo "[ERROR] Sync_dotfiles.sh not found at $SYNC_SCRIPT"
-    exit 1
-  fi
+install_software() {
+  run_script "$SOFTWARE_INSTALL" "Installing software..."
+}
 
-  echo "[INFO] Running dotfiles sync..."
-  "$SYNC_SCRIPT"
-  echo "[DONE]"
+sync_dotfiles() {
+  run_script "$SYNC_SCRIPT" "Running dotfiles sync..."
+}
+
+migrate() {
+  echo "[WARN] This option is currently unavailable"
+  #run_script "$MIGRATE_SCRIPT" "Running dotfiles migration..."
 }
 
 while :
@@ -44,6 +49,8 @@ do
     install_software
   elif [[ "$answer" == "S" ]]; then
     sync_dotfiles
+  elif [[ "$answer" == "M" ]]; then
+    migrate
   elif [[ "$answer" == "Q" ]]; then
     echo "[INFO] Bye!"
     exit 0
@@ -52,4 +59,3 @@ do
   fi
   printf "\n"
 done
-
