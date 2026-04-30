@@ -40,7 +40,6 @@ do
   echo "=== ✨ Menu ✨ ==="
   echo "[A] Install all software"
   echo "[S] Sync dotfiles"
-  echo "[M] Migrate dotfiles (coming soon)"
   echo "[Q] Quit"
   read -p "Choice: " answer
   answer=${answer:-n}

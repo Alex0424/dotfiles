@@ -1,0 +1,154 @@
+tools:
+  core_cli:
+    - name: Git
+      bin: git
+      pkg: git
+    - name: Git LFS
+      bin: git-lfs
+      pkg: git-lfs
+    - name: GitHub CLI
+      bin: gh
+      pkg: gh
+    - name: Curl
+      bin: curl
+      pkg: curl
+    - name: Wget
+      bin: wget
+      pkg: wget
+    - name: JQ
+      bin: jq
+      pkg: jq
+    - name: YQ
+      bin: yq
+      pkg: yq
+    - name: ripgrep
+      bin: rg
+      pkg: ripgrep
+    - name: fd
+      bin: fd
+      pkg: fd-find
+    - name: bat
+      bin: bat
+      pkg: bat
+    - name: Unzip
+      bin: unzip
+      pkg: unzip
+    - name: AWS CLI
+      bin: aws
+      pkg: awscli
+    - name: Make
+      bin: make
+      pkg: make
+    - name: Node.js
+      bin: node
+      pkg: nodejs
+    - name: npm
+      bin: npm
+      pkg: npm
+
+  ide:
+    - name: Neovim
+      bin: nvim
+      pkg: neovim
+    - name: VS Code
+      bin: code
+      pkg: code
+
+  hyprland:
+    - name: Kitty
+      bin: kitty
+      pkg: kitty
+    - name: Starship
+      bin: starship
+      pkg: starship
+    - name: Waybar
+      bin: waybar
+      pkg: waybar
+    - name: Rofi
+      bin: rofi
+      pkg: rofi
+    - name: Wofi
+      bin: wofi
+      pkg: wofi
+    - name: Hyprland
+      bin: hyprland
+      pkg: hyprland
+    - name: Hyprlock
+      bin: hyprlock
+      pkg: hyprlock
+    - name: Ranger
+      bin: ranger
+      pkg: ranger
+
+  containers_vm_k8s:
+    - name: Docker
+      bin: docker
+      pkg: docker
+    - name: Docker Compose
+      bin: docker
+      pkg: docker-compose
+    - name: Kubectl
+      bin: kubectl
+      pkg: kubectl
+    - name: K9S
+      bin: k9s
+      pkg: k9s
+    - name: Helm
+      bin: helm
+      pkg: helm
+    - name: Terraform
+      bin: terraform
+      pkg: terraform
+    - name: Virtual Machine Manager
+      bin: virt-manager
+      pkg: virt-manager
+    - name: Vagrant
+      bin: vagrant
+      pkg: vagrant
+
+  languages:
+    - name: .NET
+      bin: dotnet
+      pkg: dotnet-sdk-10.0
+    - name: Java JDK
+      bin: javac
+      pkg: java-latest-openjdk-devel
+    - name: C++
+      bin: g++
+      pkg: gcc-c++
+
+  debugging:
+    - name: SS (netstat replacement)
+      bin: ss
+      pkg: iproute
+    - name: Lsof
+      bin: lsof
+      pkg: lsof
+    - name: Strace
+      bin: strace
+      pkg: strace
+    - name: Tcpdump
+      bin: tcpdump
+      pkg: tcpdump
+
+  observability:
+    - name: htop
+      bin: htop
+      pkg: htop
+    - name: btop
+      bin: btop
+      pkg: btop
+    - name: iftop
+      bin: iftop
+      pkg: iftop
+    - name: Disk usage
+      bin: ncdu
+      pkg: ncdu
+    - name: Network tool
+      bin: nmap
+      pkg: nmap
+
+  security:
+    - name: Pass
+      bin: pass
+      pkg: pass
