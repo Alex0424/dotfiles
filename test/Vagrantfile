@@ -1,0 +1,6 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "jtarpley/fedora43_base"
+  config.vm.box_version = "2026.04.29"
+
+  config.vm.provision "shell", path: "setup.sh"
+end
