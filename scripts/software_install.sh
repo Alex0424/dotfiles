@@ -12,9 +12,15 @@ echo "[INFO] Enable DNF VS Code"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 echo "[INFO] Add Terraform repo"
-sudo dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+#sudo dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 
 sudo dnf makecache
+
+sudo dnf install snapd -y
+sudo dnf install yq -y
+sudo ln -s /var/lib/snapd/snap /snap
+
+sudo snap install postman
 
 install() {
   echo "[INSTALL] $1"
@@ -51,27 +57,27 @@ data=$(yq -r '
   .tools[][]
   | [.name, .bin, .pkg]
   | @tsv
-' ../tools.yaml)
+' tools.yaml)
 
 while IFS=$'\t' read -r name bin pkg; do
   install_if_missing "$name" "$bin" "$pkg"
 done <<< "$data"
 
 # AI Install via NPM
-npm install -g @github/copilot || true
-npm install -g @google/gemini-cli || true
-npm install -g @anthropic-ai/claude-code || true
+sudo npm install -g @github/copilot || true
+sudo npm install -g @google/gemini-cli || true
+sudo npm install -g @anthropic-ai/claude-code || true
 
 if fc-list | grep -qi "JetBrainsMono Nerd"; then
   echo "[OK] Nerd Font already installed"
 else
   echo "[INFO] Installing Nerd Font..."
   FONT_DIR="$HOME/.local/share/fonts"
-  mkdir -p "$FONT_DIR"
+  sudo mkdir -p "$FONT_DIR"
   cd "$FONT_DIR"
   curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
   unzip JetBrainsMono.zip
-  rm -f JetBrainsMono.zip
+  sudo rm -f JetBrainsMono.zip
   fc-cache -fv
 fi
 

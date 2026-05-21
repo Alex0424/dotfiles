@@ -96,9 +96,9 @@ tools:
     - name: Helm
       bin: helm
       pkg: helm
-    - name: Terraform
-      bin: terraform
-      pkg: terraform
+#    - name: Terraform
+#      bin: terraform
+#      pkg: terraform
     - name: Virtual Machine Manager
       bin: virt-manager
       pkg: virt-manager

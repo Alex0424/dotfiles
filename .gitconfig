@@ -1,8 +1,6 @@
 [user]
 	email = lindholmalex.la@gmail.com
   name = Alexander Lindholm
-[url "git@github.com:"]
-  insteadOf = https://github.com/ # force SSH
 [core]
   editor = nvim
 [merge]

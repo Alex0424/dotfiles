@@ -22,13 +22,13 @@
 
   "pulseaudio": {
     "format": "Vol {volume}%",
-    "format-muted": "Mute",
-    "on-click": "pavucontrol",
+    "format-muted": "mute",
+    "on-click": "$TERMINAL -e sh -c '~/.config/waybar/scripts/audio_mic.sh'",
     "scroll-step": 5
   },
 
   "custom/mic": {
-    "exec": "pactl get-source-mute @DEFAULT_SOURCE@ | grep -q yes && echo 'Mic: muted' || echo 'Mic: active'",
+    "exec": "pactl get-source-mute @DEFAULT_SOURCE@ | grep -q yes && echo 'Mic: mute' || echo 'Mic: active'",
     "on-click": "pavucontrol",
     "interval": 1
   },

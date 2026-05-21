@@ -31,8 +31,13 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - bash)"
 
-# cargo
-. "$HOME/.cargo/env"
+eval "$(ssh-agent -s)" && ssh-add ~/.ssh/hia_laptop
+
+# cargo for rust
+#. "$HOME/.cargo/env"
 
 # Starship (init last)
 eval "$(starship init bash)"
+
+# for terraform manual install
+export PATH="$PATH:$(go env GOPATH)/bin"
