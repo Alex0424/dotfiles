@@ -34,6 +34,7 @@ nvim ~/.vimrc
 ```sh
 set relativenumber
 set cursorline
+set nu
 highlight LineNrAbove ctermfg=Blue cterm=bold guifg=#51B3EC gui=bold
 highlight CursorLineNr ctermfg=Black cterm=bold guifg=#000000 gui=bold
 highlight LineNrBelow ctermfg=Magenta cterm=bold guifg=#FB508F gui=bold

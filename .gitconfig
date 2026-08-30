@@ -1,5 +1,6 @@
 [user]
-	email = lindholmalex.la@gmail.com
+  #email = personal_email
+  email = work_email
   name = Alexander Lindholm
 [core]
   editor = nvim
