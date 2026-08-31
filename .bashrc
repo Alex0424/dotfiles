@@ -36,7 +36,7 @@ eval "$(pyenv init - bash)"
 eval "$(starship init bash)"
 
 # for terraform manual install
-export PATH="$PATH:$(go env GOPATH)/bin"
+#export PATH="$PATH:$(go env GOPATH)/bin"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
