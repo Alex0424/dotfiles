@@ -89,6 +89,9 @@
     # Browser
     google-chrome
 
+    # Apps
+    discord
+
     # Dev tooling
     git
     git-lfs
