@@ -22,7 +22,15 @@ run_script() {
   echo "[DONE]"
 }
 
+is_nixos() {
+  [[ -f /etc/NIXOS ]] || grep -qi '^ID=nixos' /etc/os-release 2>/dev/null
+}
+
 install_software() {
+  if is_nixos; then
+    echo "[WARN] NixOS detected - skipping software_install.sh (use '[S] Sync dotfiles' to manage software via configuration.nix instead)"
+    return 0
+  fi
   run_script "$SOFTWARE_INSTALL" "Installing software..."
 }
 

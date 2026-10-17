@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TOOLS_YAML="$SCRIPT_DIR/../tools.yaml"
+
 echo "[INFO] Fedora environment setup starting..."
 
 echo "[INFO] Enable DNF Starship"
@@ -57,7 +60,7 @@ data=$(yq -r '
   .tools[][]
   | [.name, .bin, .pkg]
   | @tsv
-' tools.yaml)
+' "$TOOLS_YAML")
 
 while IFS=$'\t' read -r name bin pkg; do
   install_if_missing "$name" "$bin" "$pkg"

@@ -118,7 +118,7 @@
     htop
     btop
     iftop
-    ncdu
+    ncdu # disk usage
     nmap
     iproute2
     lsof
