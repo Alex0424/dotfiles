@@ -42,6 +42,34 @@ for file in "$REPO_ROOT/.config"/*; do
   echo "[OK] Linked $file_name"
 done
 
+echo "[INFO] Setting up NixOS config..."
+
+src="$REPO_ROOT/configuration.nix"
+dest="/etc/nixos/configuration.nix"
+
+if [[ -e "$src" ]]; then
+  if [[ -e "$dest" || -L "$dest" ]]; then
+    echo "[Conflict] $dest already exists"
+    sudo ls -l "$dest"
+
+    read -p "[Q&A] Replace $dest with symlink? (y/n): " answer
+    if [[ "$answer" == "y" ]]; then
+      sudo rm -rf -- "$dest"
+    else
+      answer="n"
+    fi
+  else
+    read -p "[Q&A] Link configuration.nix → $dest? (y/n): " answer
+  fi
+
+  if [[ "$answer" == "y" ]]; then
+    sudo ln -s "$src" "$dest"
+    echo "[OK] Linked configuration.nix"
+  else
+    echo "[SKIP] configuration.nix"
+  fi
+fi
+
 echo "[INFO] Setting up home dotfiles..."
 
 for file in "$REPO_ROOT"/.[!.]*; do
