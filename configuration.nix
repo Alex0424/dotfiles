@@ -106,6 +106,7 @@
     kubernetes-helm
     kubectl
     k9s
+    terraform
 
     # Hyprland / desktop
     hyprpaper
@@ -137,6 +138,7 @@
     bat
     unzip
     awscli2
+    ssm-session-manager-plugin
     vagrant
     tree
 
