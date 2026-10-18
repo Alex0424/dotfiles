@@ -138,6 +138,7 @@
     unzip
     awscli2
     vagrant
+    tree
 
     # Secrets / auth
     gnome-keyring
