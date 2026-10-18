@@ -1,0 +1,5 @@
+[user]
+  email = 33380655+Alex0424@users.noreply.github.com
+  name = Alexander Lindholm
+[url "git@github.com-personal:"]
+  insteadOf = git@github.com:
