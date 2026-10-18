@@ -1,7 +1,6 @@
 [user]
-  #email = personal_email
-  email = work_email
-  name = Alexander Lindholm
+  email = 33380655+Alex0424@users.noreply.github.com
+  name = Alex0424
 [core]
   editor = nvim
 [merge]
@@ -20,3 +19,8 @@
   amend = "!git diff --cached --quiet || (git diff --cached --stat && git commit --amend --no-edit)"
   lg = log --graph --pretty=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr %C(reset)%C(blue)<%an>' --abbrev-commit --all
   bisect-run = "!f() { git bisect start $1 $2 && git bisect run $3; }; f" # 1,2 = commit range, 3 = script
+
+[includeIf "gitdir:~/repo/work/"]
+  path = ~/.gitconfig-work
+[includeIf "gitdir:~/repo/personal/"]
+  path = ~/.gitconfig-personal
