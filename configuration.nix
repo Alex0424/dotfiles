@@ -4,6 +4,13 @@
 
 { config, pkgs, ... }:
 
+let
+  # Pinned nixpkgs-unstable, used to grab newer packages than the 26.05 stable
+  # channel ships (e.g. terraform, which needs >=1.16 for some configs).
+  pkgsUnstable = import (fetchTarball
+    "https://github.com/NixOS/nixpkgs/archive/f20cd90e28fe0403873f473b29e42662cd86e8c4.tar.gz")
+    { inherit (pkgs) system; config.allowUnfree = true; };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -106,7 +113,7 @@
     kubernetes-helm
     kubectl
     k9s
-    terraform
+    pkgsUnstable.terraform
 
     # Hyprland / desktop
     hyprpaper
