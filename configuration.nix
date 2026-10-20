@@ -120,6 +120,8 @@ in
 
     # Hyprland / desktop
     hyprpaper
+    mpvpaper
+    yt-dlp
     hyprlock
     waybar
     wofi
