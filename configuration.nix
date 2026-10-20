@@ -102,12 +102,15 @@ in
     # Dev tooling
     git
     git-lfs
+    openssl
     gh
     claude-code
     gnumake
     gcc
     dotnet-sdk_10
     nodejs
+    (python3.withPackages (ps: [ ps.paho-mqtt ps.boto3 ps.cryptography ]))
+    postgresql
 
     # Kubernetes
     kubernetes-helm
