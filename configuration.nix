@@ -109,7 +109,7 @@ in
     gcc
     dotnet-sdk_10
     nodejs
-    (python3.withPackages (ps: [ ps.paho-mqtt ps.boto3 ps.cryptography ]))
+    (python3.withPackages (ps: [ ps.paho-mqtt ps.boto3 ps.cryptography ps.pip ]))
     postgresql
 
     # Kubernetes

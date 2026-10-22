@@ -1,6 +1,9 @@
 export EDITOR=nvim #/etc/environment
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
+alias cdw='cd /home/alex/repo/work'
+alias cdp='cd /home/alex/repo/personal'
+
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
   PATH="$HOME/.local/bin:$HOME/bin:$PATH" # User specific environment
 fi
