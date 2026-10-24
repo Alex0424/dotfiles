@@ -2,9 +2,9 @@
   "layer": "top",
   "position": "top",
 
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces", "custom/systemd-failed", "temperature", "cpu", "memory", "disk"],
   "modules-center": ["clock"],
-  "modules-right": ["privacy", "tray", "custom/systemd-failed", "temperature", "cpu", "memory", "disk", "pulseaudio", "custom/mic", "network", "battery"],
+  "modules-right": ["tray", "privacy", "pulseaudio", "custom/mic", "network", "battery"],
 
   "clock": {
     "format": "{:%a %d %b  %H:%M}",
@@ -14,9 +14,9 @@
   },
 
   "custom/systemd-failed": {
-    "exec": "~/.config/waybar/scripts/failed-units.sh",
+    "exec": "~/.config/waybar/scripts/failed_units.sh",
     "interval": 60,
-    "format": "Sysd fails: {}",
+    "format": "Sysd F: {}u",
     "on-click": "$TERMINAL -e sh -c 'echo SYSTEM; systemctl --failed; echo; echo USER; systemctl --user --failed 2>/dev/null; echo; read'"
   },
 

@@ -162,9 +162,6 @@ in
     playerctl
     brightnessctl
 
-    # Fonts
-    nerd-fonts.jetbrains-mono
-
     # Screen recording
     (wrapOBS {
       plugins = with obs-studio-plugins; [
@@ -176,6 +173,7 @@ in
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = false; # GUI for libvirtd, false = CLI only
   environment.variables.HELM_PLUGINS = "${pkgs.kubernetes-helmPlugins.helm-diff}";
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
   zramSwap.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
 
