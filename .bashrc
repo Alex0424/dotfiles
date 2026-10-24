@@ -3,6 +3,7 @@ export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
 alias cdw='cd /home/alex/repo/work'
 alias cdp='cd /home/alex/repo/personal'
+alias sky='astroterm --constellation --color -unicode -i Stockholm --metadata -q'
 
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
   PATH="$HOME/.local/bin:$HOME/bin:$PATH" # User specific environment

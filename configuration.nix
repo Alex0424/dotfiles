@@ -163,6 +163,9 @@ in
     playerctl
     brightnessctl
 
+    # Fun
+    astroterm
+
     # Screen recording
     (wrapOBS {
       plugins = with obs-studio-plugins; [
