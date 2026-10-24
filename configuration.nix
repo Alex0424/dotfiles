@@ -129,6 +129,7 @@ in
     hyprshot
     ranger
     wl-clipboard
+    lua5_4
 
     # System monitoring / networking
     htop
