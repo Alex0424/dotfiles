@@ -1,26 +1,74 @@
 * {
-  font-family: sans-serif;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
   font-size: 13px;
 }
 
 window#waybar {
-  background-color: rgba(30, 30, 46, 0.75);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(20, 20, 24, 0.25) 40%,
+    rgba(10, 10, 12, 0.3)
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
   color: #ffffff;
+}
+
+#clock {
+  color: #8cf9ff;
+  letter-spacing: 1px;
+  padding: 0 10px;
+  border: none;
+  border-bottom: 1px solid #8cf9ff;
+  border-radius: 0;
+  transition: color 0.15s ease-in-out, text-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+#clock:hover {
+  color: #ff2b3d;
+  text-shadow: 0 0 3px #ff2b3d, 0 0 12px rgba(255, 43, 61, 0.9);
+  border-bottom: 1px solid #ff2b3d;
 }
 
 /* Workspaces */
 
 #workspaces button {
   padding: 5px;
-  color: #ffffff;
+  color: #8cf9ff;
+  transition: color 0.15s ease-in-out, text-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #8cf9ff;
+  border-radius: 0;
+}
+
+#workspaces button:hover {
+  color: #ff2b3d;
+  text-shadow: 0 0 3px #ff2b3d, 0 0 12px rgba(255, 43, 61, 0.9);
+  border-bottom: 1px solid #ff2b3d;
 }
 
 #workspaces button.active {
-  background: rgba(27, 163, 100, 1);
+  color: #ffd700;
+  border-bottom: 1px solid #8cf9ff;
 }
 
 /* Right Icons*/
 
-#temperature, #battery, #network, #pulseaudio, #tray, #cpu, #memory, #disk, #media, #privacy, #custom-systemd-failed {
+#temperature, #battery, #network, #pulseaudio, #tray, #cpu, #memory, #disk, #media, #privacy, #custom-systemd-failed, #custom-mic {
   padding: 0 10px;
+  color: #8cf9ff;
+  letter-spacing: 1px;
+  border: none;
+  border-bottom: 1px solid #8cf9ff;
+  border-radius: 0;
+  transition: color 0.15s ease-in-out, text-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+#temperature:hover, #battery:hover, #network:hover, #pulseaudio:hover, #cpu:hover, #memory:hover, #disk:hover, #media:hover, #custom-systemd-failed:hover, #custom-mic:hover {
+  color: #ff2b3d;
+  text-shadow: 0 0 3px #ff2b3d, 0 0 12px rgba(255, 43, 61, 0.9);
+  border-bottom: 1px solid #ff2b3d;
 }

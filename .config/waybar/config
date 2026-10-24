@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "top",
 
-  "modules-left": ["hyprland/workspaces", "custom/systemd-failed", "temperature", "cpu", "memory", "disk"],
+  "modules-left": ["hyprland/workspaces", "custom/systemd-failed", "cpu", "temperature", "memory", "disk"],
   "modules-center": ["clock"],
   "modules-right": ["tray", "privacy", "pulseaudio", "custom/mic", "network", "battery"],
 
@@ -16,21 +16,21 @@
   "custom/systemd-failed": {
     "exec": "~/.config/waybar/scripts/failed_units.sh",
     "interval": 60,
-    "format": "Sysd F: {}u",
+    "format": "<span size=\"large\">󰀦</span> {}",
     "on-click": "$TERMINAL -e sh -c 'echo SYSTEM; systemctl --failed; echo; echo USER; systemctl --user --failed 2>/dev/null; echo; read'"
   },
 
   "pulseaudio": {
-    "format": "Vol {volume}%",
-    "format-muted": "mute",
+    "format": "󰕾 {volume}%",
+    "format-muted": "󰝟",
     "on-click": "$TERMINAL -e sh -c '~/.config/waybar/scripts/audio_mic.sh'",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5
   },
 
   "custom/mic": {
-    "exec": "vol=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@); pct=$(echo $vol | grep -oP '[0-9.]+' | awk '{print int($1*100)}'); echo $vol | grep -q MUTED && echo \"Mic: mute ($pct%)\" || echo \"Mic: $pct%\"",
-    "on-click": "$TERMINAL -e sh -c '~/.config/waybar/scripts/audio_mic.sh & disown",
+    "exec": "vol=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@); pct=$(echo $vol | grep -oP '[0-9.]+' | awk '{print int($1*100)}'); echo $vol | grep -q MUTED && echo \"󰍭\" || echo \"󰍬 $pct%\"",
+    "on-click": "$TERMINAL -e sh -c '~/.config/waybar/scripts/audio_mic.sh'",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
     "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
@@ -39,7 +39,7 @@
 
   "network": {
     "interval": 5,
-    "format-ethernet": "󰈀  LAN",
+    "format-ethernet": "󰈀",
     "format-wifi": "  {essid}",
     "format-disconnected": "󰤮",
     "tooltip-format-ethernet": "Ethernet: {ifname}\nIP: {ipaddr}\nDown: {bandwidthDownBits} Up: {bandwidthUpBits}",
@@ -68,19 +68,19 @@
   },
 
   "cpu": {
-    "format": "CPU {usage}% ({load})",
+    "format": "<span size=\"large\"></span> {usage}% ({load})",
     "interval": 1,
     "on-click": "$TERMINAL -e top"
   },
 
   "memory": {
-    "format": "{used:0.1f}G/{total:0.1f}G  [{swapUsed}/{swapTotal}]",
+    "format": " {used:0.1f}G/{total:0.1f}G [{swapUsed}/{swapTotal}]",
     "on-click": "$TERMINAL -e bash -c 'free -h; read'"
   },
 
   "disk": {
     "interval": 60,
-    "format": "Disk {percentage_used}%",
+    "format": "<span size=\"large\"></span> {percentage_used}%",
     "path": "/",
     "on-click": "$TERMINAL -e sh -c 'df -h; echo; read'"
   },
