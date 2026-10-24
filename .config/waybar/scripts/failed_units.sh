@@ -1,4 +1,4 @@
-##!/usr/bin/env bash
+#!/usr/bin/env bash
 
 sys=$(systemctl --failed --no-legend | wc -l)
 usr=$(systemctl --user --failed --no-legend | wc -l)
