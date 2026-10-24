@@ -24,12 +24,14 @@
     "format": "Vol {volume}%",
     "format-muted": "mute",
     "on-click": "$TERMINAL -e sh -c '~/.config/waybar/scripts/audio_mic.sh'",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5
   },
 
   "custom/mic": {
     "exec": "vol=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@); pct=$(echo $vol | grep -oP '[0-9.]+' | awk '{print int($1*100)}'); echo $vol | grep -q MUTED && echo \"Mic: mute ($pct%)\" || echo \"Mic: $pct%\"",
     "on-click": "$TERMINAL -e sh -c '~/.config/waybar/scripts/audio_mic.sh & disown",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
     "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
     "interval": 1

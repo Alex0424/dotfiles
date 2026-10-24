@@ -6,6 +6,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(programs.terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(programs.cli_file_manager))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(programs.gui_file_manager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
