@@ -1,8 +1,8 @@
 export EDITOR=nvim #/etc/environment
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
-alias cdw='cd /home/alex/repo/work'
-alias cdp='cd /home/alex/repo/personal'
+alias cdw="cd $HOME/repo/work"
+alias cdp="cd $HOME/repo/personal"
 alias sky='astroterm --unicode --constellation --color -i Stockholm --metadata -q'
 
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
@@ -22,8 +22,5 @@ if [ -d ~/.bashrc.d ]; then
   done
 fi
 unset rc
-
-eval "$(ssh-agent -s)" && ssh-add ~/.ssh/work_gh
-#eval "$(ssh-agent -s)" && ssh-add ~/.ssh/personal_gh
 
 eval "$(starship init bash)"
