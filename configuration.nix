@@ -165,6 +165,7 @@ in
 
     # Fun
     astroterm
+    bb
 
     # Screen recording
     (wrapOBS {
